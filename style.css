@@ -1,0 +1,149 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+}
+.sidebar {
+     background-color: rgb(255, 245, 245);
+    width: 434px;
+    font-family: 'Fira sans','sans-serif';
+    height: 100vh;
+}
+
+.sidebar nav {
+    padding: 45;
+}
+
+.sidebar nav li {
+    list-style: none;
+    font-size: 30px;
+    padding: 30px 0px;
+}
+.sidebar nav li a {
+    text-decoration: none;
+    color: black;
+    
+}
+    
+.main {
+   <! background-color: yellow;
+    width: 90vw;
+}
+.container {
+display: flex;
+}
+.info{
+    height: 58vh;
+    width: 80vw;
+ <! background-color: rgb(194, 8, 156);
+  margin: 144px auto;
+display: flex;
+justify-content: space-around;
+}
+.devinfo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family:  "Source Code Pro", monospace;
+}
+.hello{
+    font-size: 65px;
+    font-family: "Source Code Pro", monospace;
+}  
+
+.name{
+    font-size: 50px;
+    font-weight: bold;
+    font-family: 'Fira sans','sans-serif';
+
+    
+}
+
+.about{
+    font-size: 40px;
+    font-family:  "Source Code Pro", monospace;
+}
+.moreabout{
+    font-size: 25px;
+    margin: 20px;
+    font-family: 'Fira sans','sans-serif';
+
+}
+.buttons{
+    margin-top: 32px;
+}
+
+.buttons button{
+    padding:9px 14px ;
+    border-radius:22px ;
+    font-weight:white ;
+    font-size:21px ;
+    color: lightseagreen;
+    background-color:white ;
+    margin: 0px 3px;
+    cursor: pointer;
+}
+.buttons button:hover{
+    color: white;
+    background-color:lightseagreen ;
+
+}
+.devpic img{
+    display: flex;
+    width: 381px;
+    height: 58vh;
+
+}
+.contactform{
+    font-family: 'Fira sans','sans-serif';
+    padding: 0 34px;
+    padding-top: 144px;
+  
+
+}
+.contactform h1{
+
+    font-family: monospace;
+    
+}
+.contactform  form div{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.contactform  form div input{
+    width: 16vw;
+    border-radius: 5px;
+    margin: 6px 0px 0px 0px;
+    padding: 3px;
+
+}
+#form-check-label{                                         
+flex-direction: row;
+}
+#form-check-input{
+    width: 2px;
+    padding: 3px 0px;
+    margin: unset;
+
+    }
+#form-check{
+    flex-direction: row;
+    
+  
+                  
+}
+
+
+#emailHelp{
+    font-size: 8px;
+    color: midnightblue;
+    margin: 0 5px;
+    margin-left: ;
+}
