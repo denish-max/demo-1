@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beautiful Todo List</title>
+    <link rel="stylesheet" href="todo.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="app-title">
+                    <i class="fas fa-check-circle"></i>
+                    TodoMaster
+                </h1>
+                <div class="header-controls">
+                    <button class="theme-toggle" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <div class="stats">
+                        <span id="totalTodos">0</span> tasks
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Input Section -->
+            <section class="input-section">
+                <div class="input-container">
+                    <form class="todo-form" id="todoForm">
+                        <div class="input-group">
+                            <input 
+                                type="text" 
+                                id="todoInput" 
+                                placeholder="What needs to be done?" 
+                                required
+                                autocomplete="off"
+                            >
+                            <button type="submit" class="add-btn">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="todo-options">
+                            <div class="option-group">
+                                <label for="category">Category:</label>
+                                <select id="category">
+                                    <option value="personal">Personal</option>
+                                    <option value="work">Work</option>
+                                    <option value="shopping">Shopping</option>
+                                    <option value="health">Health</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="option-group">
+                                <label for="priority">Priority:</label>
+                                <select id="priority">
+                                    <option value="low">Low</option>
+                                    <option value="medium" selected>Medium</option>
+                                    <option value="high">High</option>
+                                </select>
+                            </div>
+                            
+                            <div class="option-group">
+                                <label for="dueDate">Due Date:</label>
+                                <input type="date" id="dueDate">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Controls Section -->
+            <section class="controls-section">
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        placeholder="Search todos..."
+                        autocomplete="off"
+                    >
+                </div>
+                
+                <div class="filter-container">
+                    <button class="filter-btn active" data-filter="all">
+                        All <span class="count" id="allCount">0</span>
+                    </button>
+                    <button class="filter-btn" data-filter="active">
+                        Active <span class="count" id="activeCount">0</span>
+                    </button>
+                    <button class="filter-btn" data-filter="completed">
+                        Completed <span class="count" id="completedCount">0</span>
+                    </button>
+                </div>
+                
+                <div class="sort-container">
+                    <select id="sortBy">
+                        <option value="created">Created Date</option>
+                        <option value="dueDate">Due Date</option>
+                        <option value="priority">Priority</option>
+                        <option value="alphabetical">Alphabetical</option>
+                    </select>
+                </div>
+            </section>
+
+            <!-- Todo List Section -->
+            <section class="todos-section">
+                <div class="todo-list" id="todoList">
+                    <!-- Todos will be dynamically inserted here -->
+                </div>
+                
+                <div class="empty-state" id="emptyState">
+                    <i class="fas fa-clipboard-list"></i>
+                    <h3>No todos yet</h3>
+                    <p>Add your first todo above to get started!</p>
+                </div>
+            </section>
+
+            <!-- Bulk Actions -->
+            <section class="bulk-actions" id="bulkActions">
+                <button class="bulk-btn" id="selectAll">
+                    <i class="fas fa-check-square"></i>
+                    Select All
+                </button>
+                <button class="bulk-btn" id="deleteSelected">
+                    <i class="fas fa-trash"></i>
+                    Delete Selected
+                </button>
+                <button class="bulk-btn" id="completeSelected">
+                    <i class="fas fa-check"></i>
+                    Complete Selected
+                </button>
+                <button class="bulk-btn" id="clearCompleted">
+                    <i class="fas fa-broom"></i>
+                    Clear Completed
+                </button>
+            </section>
+        </main>
+    </div>
+
+    <!-- Edit Modal -->
+    <div class="modal-overlay" id="editModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Edit Todo</h3>
+                <button class="close-btn" id="closeModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="editForm">
+                    <div class="form-group">
+                        <label for="editText">Todo Text:</label>
+                        <textarea id="editText" rows="3" required></textarea>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="editCategory">Category:</label>
+                            <select id="editCategory">
+                                <option value="personal">Personal</option>
+                                <option value="work">Work</option>
+                                <option value="shopping">Shopping</option>
+                                <option value="health">Health</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="editPriority">Priority:</label>
+                            <select id="editPriority">
+                                <option value="low">Low</option>
+                                <option value="medium">Medium</option>
+                                <option value="high">High</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="editDueDate">Due Date:</label>
+                        <input type="date" id="editDueDate">
+                    </div>
+                    
+                    <div class="modal-actions">
+                        <button type="button" class="btn-secondary" id="cancelEdit">Cancel</button>
+                        <button type="submit" class="btn-primary">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="todo.js"></script>
+</body>
+</html>
